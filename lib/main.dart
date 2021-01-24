@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
           title: Text('Food Delivery Exercise'),
           centerTitle: true,
         ),
-        body: Exercise1(),
+        body: Exercise2(),
         floatingActionButton: FloatingActionButton(
           onPressed: () {},
           tooltip: 'Increment',

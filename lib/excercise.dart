@@ -54,13 +54,14 @@ class _Exercise1State extends State<Exercise1> {
           Container(
             margin: EdgeInsets.all(8),
             child: TextFormField(
-                controller: celsiusTemp,
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                  labelText: 'C Temperature',
-                  border: OutlineInputBorder(),
-                ),
-                onChanged: onChangeC2F),
+              controller: celsiusTemp,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                labelText: 'C Temperature',
+                border: OutlineInputBorder(),
+              ),
+              onChanged: onChangeC2F,
+            ),
           ),
           Container(
             margin: EdgeInsets.all(8),
@@ -80,12 +81,12 @@ class _Exercise1State extends State<Exercise1> {
   }
 }
 
-class Excericse2 extends StatefulWidget {
+class Exercise2 extends StatefulWidget {
   @override
-  _Excericse2State createState() => _Excericse2State();
+  _Exercise2State createState() => _Exercise2State();
 }
 
-class _Excericse2State extends State<Excericse2> {
+class _Exercise2State extends State<Exercise2> {
   @override
   Widget build(BuildContext context) {
     return Stack(children: [
@@ -185,16 +186,16 @@ class _Excericse2State extends State<Excericse2> {
             child: Container(color: Colors.pinkAccent),
           ),
           Expanded(
-              flex: 1,
+              flex: 2,
               child: Container(
                 child: Row(
                   children: [
                     Expanded(
-                      flex: 7,
+                      flex: 8,
                       child: Container(color: Colors.pinkAccent),
                     ),
                     Expanded(
-                      flex: 3,
+                      flex: 2,
                       child: Container(color: Colors.white),
                     ),
                   ],
@@ -207,7 +208,7 @@ class _Excericse2State extends State<Excericse2> {
         ],
       ),
       new Positioned(
-          left: 40.0,
+          left: 60.0,
           top: 380.0,
           child: new Container(
             width: 180,
