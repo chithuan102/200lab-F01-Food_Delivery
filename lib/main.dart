@@ -35,7 +35,30 @@ class _Exercise1State extends State<Exercise1> {
   final _formKey = GlobalKey<FormState>();
   TextEditingController celsiusTemp = new TextEditingController();
   TextEditingController fhrenheitTemp = new TextEditingController();
-  bool _validate = false;
+
+  @override
+  void dispose() {
+    celsiusTemp.dispose();
+    fhrenheitTemp.dispose();
+    super.dispose();
+  }
+
+  void onChangeC2F(String value) {
+    try {
+      fhrenheitTemp.text =
+          ((double.parse(value) * 1.8) + 32).toStringAsFixed(2);
+    } catch (e) {
+      fhrenheitTemp.text = '0';
+    }
+  }
+
+  void onChangeF2C(String value) {
+    try {
+      celsiusTemp.text = ((double.parse(value) - 32) / 1.8).toStringAsFixed(2);
+    } catch (e) {
+      celsiusTemp.text = '0';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,47 +78,24 @@ class _Exercise1State extends State<Exercise1> {
           Container(
             margin: EdgeInsets.all(8),
             child: TextFormField(
-              controller: celsiusTemp,
-              decoration: InputDecoration(
-                labelText: 'C Temperature',
-                border: OutlineInputBorder(),
-              ),
-              onChanged: ((value) {
-                try {
-                  fhrenheitTemp.text =
-                      ((double.parse(value) * 1.8) + 32).toStringAsFixed(2);
-                  _validate = false;
-                } catch (e) {
-                  _validate = true;
-                  fhrenheitTemp.text = '0';
-                }
-                if (value == '') {
-                  _validate = true;
-                }
-              }),
-            ),
+                controller: celsiusTemp,
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                  labelText: 'C Temperature',
+                  border: OutlineInputBorder(),
+                ),
+                onChanged: onChangeC2F),
           ),
           Container(
             margin: EdgeInsets.all(8),
             child: TextFormField(
               controller: fhrenheitTemp,
+              keyboardType: TextInputType.number,
               decoration: InputDecoration(
                 labelText: 'F Temperature',
                 border: OutlineInputBorder(),
               ),
-              onChanged: ((value) {
-                try {
-                  celsiusTemp.text =
-                      ((double.parse(value) - 32) / 1.8).toStringAsFixed(2);
-                  _validate = false;
-                } catch (e) {
-                  _validate = true;
-                  celsiusTemp.text = '0';
-                }
-                if (value == '') {
-                  _validate = true;
-                }
-              }),
+              onChanged: onChangeF2C,
             ),
           )
         ],
