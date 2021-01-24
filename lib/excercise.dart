@@ -9,8 +9,8 @@ class Exercise1 extends StatefulWidget {
 
 class _Exercise1State extends State<Exercise1> {
   final _formKey = GlobalKey<FormState>();
-  TextEditingController celsiusTemp = new TextEditingController();
-  TextEditingController fhrenheitTemp = new TextEditingController();
+  TextEditingController celsiusTemp = TextEditingController();
+  TextEditingController fhrenheitTemp = TextEditingController();
 
   @override
   void dispose() {
@@ -48,7 +48,7 @@ class _Exercise1State extends State<Exercise1> {
             alignment: Alignment.center,
             child: Text(
               'Convert degrees C to F',
-              style: new TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
             ),
           ),
           Container(
@@ -207,10 +207,10 @@ class _Exercise2State extends State<Exercise2> {
           )
         ],
       ),
-      new Positioned(
+      Positioned(
           left: 60.0,
           top: 380.0,
-          child: new Container(
+          child: Container(
             width: 180,
             height: 180,
             color: Color(0xFF0E3311).withOpacity(0.5),
