@@ -9,24 +9,31 @@ class Exercise1 extends StatefulWidget {
 
 class _Exercise1State extends State<Exercise1> {
   final _formKey = GlobalKey<FormState>();
-  TextEditingController celsiusTemp = TextEditingController();
-  TextEditingController fhrenheitTemp = TextEditingController();
+  TextEditingController _celsiusEditController;
+  TextEditingController _fhrenheitEditController;
+
+  @override
+  void initState() {
+    _celsiusEditController = TextEditingController();
+    _fhrenheitEditController = TextEditingController();
+    super.initState();
+  }
 
   @override
   void dispose() {
-    celsiusTemp.dispose();
-    fhrenheitTemp.dispose();
+    _celsiusEditController.dispose();
+    _fhrenheitEditController.dispose();
     super.dispose();
   }
 
   void onChangeC2F(String value) {
-    fhrenheitTemp.text = double.tryParse(value) != null
+    _fhrenheitEditController.text = double.tryParse(value) != null
         ? ((double.tryParse(value) * 1.8) + 32).toStringAsFixed(2)
         : '0';
   }
 
   void onChangeF2C(String value) {
-    celsiusTemp.text = double.tryParse(value) != null
+    _celsiusEditController.text = double.tryParse(value) != null
         ? ((double.parse(value) - 32) / 1.8).toStringAsFixed(2)
         : '0';
   }
@@ -43,13 +50,16 @@ class _Exercise1State extends State<Exercise1> {
             alignment: Alignment.center,
             child: Text(
               'Convert degrees C to F',
-              style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           Container(
             margin: EdgeInsets.all(8),
             child: TextFormField(
-              controller: celsiusTemp,
+              controller: _celsiusEditController,
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
                 labelText: 'C Temperature',
@@ -61,7 +71,7 @@ class _Exercise1State extends State<Exercise1> {
           Container(
             margin: EdgeInsets.all(8),
             child: TextFormField(
-              controller: fhrenheitTemp,
+              controller: _fhrenheitEditController,
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
                 labelText: 'F Temperature',
@@ -69,7 +79,7 @@ class _Exercise1State extends State<Exercise1> {
               ),
               onChanged: onChangeF2C,
             ),
-          )
+          ),
         ],
       ),
     );
