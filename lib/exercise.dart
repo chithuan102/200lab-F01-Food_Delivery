@@ -28,7 +28,7 @@ class _Exercise1State extends State<Exercise1> {
 
   void onChangeC2F(String value) {
     _fhrenheitEditController.text = double.tryParse(value) != null
-        ? ((double.tryParse(value) * 1.8) + 32).toStringAsFixed(2)
+        ? ((double.parse(value) * 1.8) + 32).toStringAsFixed(2)
         : '0';
   }
 
