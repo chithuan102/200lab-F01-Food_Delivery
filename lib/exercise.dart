@@ -20,20 +20,15 @@ class _Exercise1State extends State<Exercise1> {
   }
 
   void onChangeC2F(String value) {
-    try {
-      fhrenheitTemp.text =
-          ((double.parse(value) * 1.8) + 32).toStringAsFixed(2);
-    } catch (e) {
-      fhrenheitTemp.text = '0';
-    }
+    fhrenheitTemp.text = double.tryParse(value) != null
+        ? ((double.tryParse(value) * 1.8) + 32).toStringAsFixed(2)
+        : '0';
   }
 
   void onChangeF2C(String value) {
-    try {
-      celsiusTemp.text = ((double.parse(value) - 32) / 1.8).toStringAsFixed(2);
-    } catch (e) {
-      celsiusTemp.text = '0';
-    }
+    celsiusTemp.text = double.tryParse(value) != null
+        ? ((double.parse(value) - 32) / 1.8).toStringAsFixed(2)
+        : '0';
   }
 
   @override
@@ -183,7 +178,9 @@ class _Exercise2State extends State<Exercise2> {
           ),
           Expanded(
             flex: 5,
-            child: Container(color: Colors.pinkAccent),
+            child: Container(
+              color: Colors.pinkAccent,
+            ),
           ),
           Expanded(
               flex: 2,
@@ -192,18 +189,24 @@ class _Exercise2State extends State<Exercise2> {
                   children: [
                     Expanded(
                       flex: 8,
-                      child: Container(color: Colors.pinkAccent),
+                      child: Container(
+                        color: Colors.pinkAccent,
+                      ),
                     ),
                     Expanded(
                       flex: 2,
-                      child: Container(color: Colors.white),
+                      child: Container(
+                        color: Colors.white,
+                      ),
                     ),
                   ],
                 ),
               )),
           Expanded(
             flex: 3,
-            child: Container(color: Colors.pinkAccent),
+            child: Container(
+              color: Colors.pinkAccent,
+            ),
           )
         ],
       ),
